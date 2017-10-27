@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import router from "./router.js";
+import NavBar from './components/navBar'
 
 class App extends Component {
   render() {
@@ -13,6 +15,10 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <div id="App_mainContainer">
+          <NavBar/>
+          {router}
+        </div>
       </div>
     );
   }

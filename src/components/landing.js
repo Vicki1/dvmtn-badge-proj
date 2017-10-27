@@ -50,7 +50,7 @@ addToCart(product){
         
         return(
             <div className="landingDiv">
-          <video src="../videoCollection/Lion - 9579.mp4" controls><p>Your browser does not support video</p></video>
+         <video src="../videoCollection/Lion - 9579.mp4"></video>
            MAIN PRODUCT <br/>
            NAME: {this.state.mainProduct.product_name}<br/>
            PRICE : {this.state.mainProduct.price}<br/><br/>

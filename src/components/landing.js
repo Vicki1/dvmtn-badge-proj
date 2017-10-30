@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Cart from "./cart";
 import {addToCartInReducer} from "../redux/reducer";
+import {bindActionCreators} from 'redux';
 
 class Landing extends Component{
     constructor(props){
@@ -70,4 +71,10 @@ function mapStateToProps(state){
       state:state
     }
 }
-export default connect(mapStateToProps,{addToCartInReducer})(Landing);
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({
+        addToCartInReducer : addToCartInReducer
+    }, dispatch);
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Landing);

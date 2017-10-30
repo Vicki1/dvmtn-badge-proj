@@ -15,6 +15,9 @@
     "redux": "^3.7.2",
     "redux-promise-middleware": "^4.4.1"
   },
+  "engine":{
+    "node": "8.3.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

@@ -2,11 +2,15 @@
   "name": "badge-seven",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://localhost:3001",
+  "proxy": "https://localhost:4000",
   "dependencies": {
     "axios": "^0.17.0",
     "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "node-env-file": "^0.1.8",
+    "path": "^0.12.7",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
@@ -15,12 +19,13 @@
     "redux": "^3.7.2",
     "redux-promise-middleware": "^4.4.1"
   },
-  "engine":{
+  "engine": {
     "node": "8.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "webpack --progress",
+    "dev": "webpack-dev-server --hot --inline",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

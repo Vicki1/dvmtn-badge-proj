@@ -1,13 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-//const herokuURI = cson.herokuURI ;
-//const connectionString = herokuURI;
-//const session - require('express-session');
+const cors = require('cors')
+const con = require('./src/config')
+const herokuURI = con.herokuURI ;
+const connectionString = herokuURI;
+const session = require('express-session');
 const massive = require('massive');
+const path= require('path');
 
 
 var app = express();
-//app.use(express.static(path.join(__dirname,'public')));
+app.use(cors());
+
+
+
+app.use(session({secret:con.sessionSecret}))
+
+
+app.use(express.static(path.join(__dirname,'public')));
 app.use(bodyParser.json());
 
 //app.use(session({secret: cons.sessionSecret}))
@@ -15,19 +25,41 @@ app.use(bodyParser.json());
 
 
 
-/*massive({connectionString
-}).then(db=>{
+massive({connectionString}).then(db=>{
     app.set('db',db)
+        console.log('connected to my database')
+    db.createUsersTable().then(response=>{
+            console.log(response, 'users table created')
+    }).catch(err=>console.log(err))
 
-    db.createProductsTable().then(response=>{
+     db.createProductsTable().then(response=>{
             console.log(response, 'products table created')
     }).catch(err=>console.log(err))
 
 
-})*/
+}).catch(err=>console.log(err, 'see massive connection function'))
+
+////////////////////
+////// ENDPOINTS////
+//////////////////
+
+app.get("/test",(req,res)=>{
+    console.log('this is working ,', req.session)
+    res.status(200).send('it worked')
+})
+
+app.get(`/api/getAllProducts`, (req,res)=>{
+    db.getAllProducts()
+    .then(results=>res.status(200).send(results))
+    .catch(err=>console.log(err))
+})
+
+//////////////////////
+///END OF ENDPOINTS///
+//////////////////////
 
 
-var port=3001
+const port=4000;
 app.listen(port,function(){
-    console.log(`app listening on ${port}`)
+    console.log(` hi there ,app listening on ${port}`)
 })

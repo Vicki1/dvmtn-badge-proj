@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {getAllProducts} from "../redux/reducer";
 
 export default function Cart(props){
       if(props.cartList){
@@ -14,6 +16,7 @@ export default function Cart(props){
         return(
            <div className="cartDisplayDiv">
                {cartDisplay}
+
            </div>
         )
       }
@@ -26,3 +29,4 @@ export default function Cart(props){
       }
 
 }
+

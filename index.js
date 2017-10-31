@@ -17,7 +17,7 @@ app.use(cors());
 app.use(session({secret:con.sessionSecret}))
 
 
-app.use(express.static(path.join(__dirname,'public')));
+//app.use(express.static(path.join(__dirname,'public')));
 app.use(bodyParser.json());
 
 //app.use(session({secret: cons.sessionSecret}))
@@ -47,12 +47,17 @@ app.get("/test",(req,res)=>{
     console.log('this is working ,', req.session)
     res.status(200).send('it worked')
 })
-
+ 
 app.get(`/api/getAllProducts`, (req,res)=>{
-    db.getAllProducts()
-    .then(results=>res.status(200).send(results))
+ req.app.get('db').getAllProducts()
+    .then(results=>{
+        console.log(`getAllProducts returning something`)
+            res.status(200).send(results)
+    })
     .catch(err=>console.log(err))
 })
+
+
 
 //////////////////////
 ///END OF ENDPOINTS///

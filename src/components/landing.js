@@ -1,17 +1,20 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Cart from "./cart";
-import {addToCartInReducer, getAllProducts} from "../redux/reducer";
+import {addToCartInReducer, getAllProducts, getThirdProduct} from "../redux/reducer";
 import {bindActionCreators} from 'redux';
+import axios from 'axios';
 
 class Landing extends Component{
     constructor(props){
         super(props)
 
         this.state={
-          productsToDipsplay: [],
+          productsToDipsplay: props.state.products,
            mainProduct: props.state.products[0],
-           cartList: []
+           cartList: [],
+           did: '',
+           
 
         }
       this.changeMainPic = this.changeMainPic.bind(this);
@@ -25,7 +28,7 @@ class Landing extends Component{
    }
 
    componentDidMount(){
-       // this.props.getAllProducts();
+      this.props.getThirdProduct();
    }
 
    changeMainPic(product){
@@ -35,7 +38,7 @@ class Landing extends Component{
 addToCart(product){
     var newCartList=[...this.state.cartList, product]
     this.setState({cartList:newCartList})
-    this.props.addToCartInReducer(product);
+   
 }
 
 
@@ -82,6 +85,9 @@ addToCart(product){
                   <div className="boxy five"></div>
               </div>
               <div className="fixed"></div>
+              <button onClick={()=>this.props.getAllProducts()}>see special product name</button>
+              Special Product Name: {this.props.state.specialProductName ? this.props.state.specialProductName.product_name : ''}<br/>
+              third product id: {this.props.state.thirdProduct.id}
             </div>
         )
     }
@@ -94,10 +100,10 @@ function mapStateToProps(state){
     }
 }
 
-function mapDispatchToProps(dispatch){
+/*function mapDispatchToProps(dispatch){
     return bindActionCreators({
         addToCartInReducer : addToCartInReducer,
         getAllProducts: getAllProducts
     }, dispatch);
-}
-export default connect(mapStateToProps,mapDispatchToProps)(Landing);
+}*/
+export default connect(mapStateToProps,{getAllProducts, getThirdProduct})(Landing);

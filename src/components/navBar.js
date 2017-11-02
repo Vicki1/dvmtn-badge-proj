@@ -9,7 +9,8 @@ export default function NavBar(){
               <ul>
                  <Link to={`/`}><li>Home</li></Link>
                  <Link to={`/about`}><li>About</li></Link>
-                 <Link to={`/cart`}><li>Your Cart</li></Link>
+                
+                 
                 
                   
              </ul>

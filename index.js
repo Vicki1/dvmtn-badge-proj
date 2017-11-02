@@ -57,7 +57,14 @@ app.get(`/api/getAllProducts`, (req,res)=>{
     .catch(err=>console.log(err))
 })
 
-
+/*app.get(`/api/product/:id`, (req,res)=>{
+    req.app.get('db').getSingleProduct(req.params.id)
+    .then(results=>{
+        console.log('product id ran and returned', result)
+        res.status(200).send(results)
+    })
+    .catch(err=>console.log(`error from product/:id endpoint`, err))
+})*/
 
 //////////////////////
 ///END OF ENDPOINTS///

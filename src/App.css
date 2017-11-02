@@ -14,6 +14,19 @@
   color: white;
 }
 
+@media(max-width: 500px){
+  .App-header{
+    color: orange;
+    text-shadow: 2px 1px black;
+  }
+}
+
+@media screen and (max-width: 1000px){
+  body{
+    background: blue;
+  }
+}
+
 .App-title {
   font-size: 1.5em;
 }
@@ -26,6 +39,7 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
 
 .welcome{
   
@@ -105,6 +119,7 @@ box-sizing: border-box
   top: 20px;
   position: relative;
   border: 5px solid green;
+  background: linear-gradient(-90deg,lightseagreen,grey)
 }
 
 .fixed{
@@ -114,10 +129,77 @@ position: fixed;
   background: magenta;
   bottom: 20px;
   right: 20px;
+  box-shadow: 5px 5px black;
+}
+
+
+.cat{
+  display: flex;
+
 }
 
 
 
 
 
+.kitty{
+  height: 200px;
+  width: 200px;
+  background: brown;
+   margin: 10px;
+   border: 5px solid orange;
+   display: flex;
+    justify-content: space-between;
+   
+}
 
+.kitty div{
+  margin: 1px;
+  background: white;
+ 
+ 
+}
+
+.godzilla{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.lizard{
+  height: 200px;
+  width: 200px;
+  background: black;
+    margin: 10px;
+}
+
+
+.dog{
+  display: flex;
+  flex-direction: row-reverse;
+  direction: ltr;
+  
+}
+.puppy{
+ height: 200px;
+  width: 200px;
+  background: pink;
+  margin: 10px;
+}
+
+
+.alignItemsList{
+  height: 500px;
+   align-items: center;
+ display: flex;
+ flex-flow: row;
+ direction: ltr;
+ align-items: center;
+}
+
+.alignItemsList div{
+ 
+  margin: 5px;
+ background: orange;
+ width: 50px;
+ position: static
+}

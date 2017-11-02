@@ -61,6 +61,7 @@ export function getThirdProduct(){
 
 
 
+
 export function addToCartInReducer(product){
     return{
        type: ADD_TO_CART,

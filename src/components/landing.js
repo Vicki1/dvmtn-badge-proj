@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Cart from "./cart";
 import {addToCartInReducer, getAllProducts, getThirdProduct} from "../redux/reducer";
 import {bindActionCreators} from 'redux';
+import ComponentWPR from './componentWRP';
 import axios from 'axios';
 
 class Landing extends Component{
@@ -58,7 +59,7 @@ addToCart(product){
         
         return(
             <div className="landingDiv">
-      
+                <ComponentWPR />
            MAIN PRODUCT <br/>
            NAME: { this.state.mainProduct ? this.state.mainProduct.product_name: ''}
            PRICE : { this.state.mainProduct ? this.state.mainProduct.price : ''}
@@ -67,6 +68,7 @@ addToCart(product){
            <div id="cartDiv">Your Cart : <Cart cartList={(this.state.cartList.length>0) ? this.state.cartList : ''}/></div>
             <p>this is after the card div</p>  
                <div className="productsDisplayDiv">{productsDisplay}</div>
+               <iframe src="https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/324/9/226624999/796537768.mp4?token=1509503151-0x3960ea3b1163519f9f96a5d13e47d298d1bb0fd1&download=1&filename=Swimming+-+10835.mp4" title="hey" width="200px" height="150px"></iframe>
               <ul className="list">
                   
                 <li id="one">1</li>
@@ -75,8 +77,10 @@ addToCart(product){
                 <li>4</li>
               </ul>
               <a href='http://www.clker.com/cliparts/1/b/c/5/12654323841027211571sunset.png'>hey this is my "" selected</a>
-                <video href="https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/4846/8/224234489/785530033.mp4?token=1509417455-0x4dc99818e0ca0c9e8d5cab966174cc9e2703502b&download=1&filename=Milky+Way+-+10339.mp4" controls></video>
-              
+
+             audio <audio controls>
+                  <source src="lalalaSOMEAUDIOFILEHERE.ogg" type="audio/ogg"/>
+              </audio>
               <div className="allBoxes">
                 <div className="boxmodel boxy"></div>
                 <div className="boxy two"></div>
@@ -100,10 +104,10 @@ function mapStateToProps(state){
     }
 }
 
-/*function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch){
     return bindActionCreators({
-        addToCartInReducer : addToCartInReducer,
+        getThirdProduct: getThirdProduct,
         getAllProducts: getAllProducts
     }, dispatch);
-}*/
-export default connect(mapStateToProps,{getAllProducts, getThirdProduct})(Landing);
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Landing);
